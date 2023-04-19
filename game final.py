@@ -19,7 +19,7 @@ def sit1(self):
             print("you were overpowered and died") 
             self.health = 0
         else:
-            self = self + buffalo
+            self.health = self.health + buffalo
             print(f"You feasted! You're health is now {self.health}")
             #how can we turn this type of process into a magic metod?
     else:
