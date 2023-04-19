@@ -1,3 +1,5 @@
+import random as ran
+
 class Traits:
     
     def __init__(self, name, attack, speed, armor, health):
@@ -30,12 +32,19 @@ def sit2(self):
     
     act2 = input("""You're super thirsty and come across a murky watering whole where 
                  an agressive hippo is known to rest. \nDo you drink from it? (y/n)""")
+    if act2 is not "y" or "n":
+        print("Please enter either y or n")
     if act2 == "y":
-        print("Drink up! Looks like the hippo wasn't home.")
-        self.health + 3
+        isHome = ran.randint(0, 1)
+        if isHome == 0:
+            print("Drink up! Looks like the hippo wasn't home.")
+            self.health + 2
+        if isHome == 1:
+            print("The hippo was home and angry, the hippo attacked")
+            self.health - 3
     else:
         (self.health - 2 if self.speed > 6 
-         else self.health - 5 & print("You may not get to another watering hole for a while")) 
+         else self.health - 2 & print("You may not get to another watering hole for a while")) 
         #satisfied the condional expr req here^
 
 #magic methods
