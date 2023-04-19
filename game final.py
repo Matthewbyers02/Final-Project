@@ -45,10 +45,10 @@ def sit3(self):
     spoiled = {"monkey", "impala", "ostritch"}
     userOption = {}
     #to ask 3 times 
+    print("""You come across an assortment of carcasses in an abondoned cave.\n{food}""")
     i = 3
     while i > 0 :
-        act3 = input("""You come across an assortment of carcasses in an abondoned cave, pick 1 to eat/n
-                    {food}\n You have {i} pick(s) left.""")
+        act3 = input("""Choose one to eat! You have {i} pick(s) left: """)
         #updates initalized set
         userOption.append(act3)
         i -= 1
