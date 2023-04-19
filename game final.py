@@ -32,11 +32,38 @@ def sit2(self):
                  an agressive hippo is known to rest. \nDo you drink from it? (y/n)""")
     if act2 == "y":
         print("Drink up! Looks like the hippo wasn't home.")
-        self.health + 3
+        self.health += 3
+        #do I need to use the add method for this^
     else:
-        (self.health - 2 if self.speed > 6 
-         else self.health - 5 & print("You may not get to another watering hole for a while")) 
+        (self.health -= 2 if self.speed > 6 
+         else self.health -= 5 & print("You may not get to another watering hole for a while"))
         #satisfied the condional expr req here^
+        
+def sit3(self):
+
+    food = {"boar", "monkey", "impala", "wolf", "snake", "hyena", "zebra", "ostrich"} #says food isnt access in fstring
+    spoiled = {"monkey", "impala", "ostritch"}
+    userOption = {}
+    #to ask 3 times 
+    i = 3
+    while i > 0 :
+        act3 = input("""You come across an assortment of carcasses in an abondoned cave, pick 1 to eat/n
+                    {food}\n You have {i} pick(s) left.""")
+        #updates initalized set
+        userOption.append(act3)
+        i -= 1
+    #checks to see if any chosen food is spoiled and updates health accordinly 
+    overlap = bool(userOption & spoiled)
+    if overlap == False:
+        self.health += 3
+        print("You chose your food wisely. Your health is now {self.health}")
+    else:
+        self.health -= 3
+        print("Some of the food you ate was spoiled! You health is now {self.health}")
+        
+        
+    
+    
 
 #magic methods
 def __add__(self, other): 
