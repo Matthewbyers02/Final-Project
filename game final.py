@@ -15,7 +15,7 @@ class Traits:
 def sit1(self):
     
     act1 = input("""You come across a herd of buffalo bathing in the mud.\n
-          Do you choose to attack or leave them be? (a/l):""")
+          Do you choose to attack or run? (a/r): """)
     if act1 == "a":
         if self.armor < 5 | self.attack < 5:
             print("you were overpowered and died") 
@@ -25,8 +25,9 @@ def sit1(self):
             print(f"You feasted! You're health is now {self.health}")
             #how can we turn this type of process into a magic metod?
     else:
-        self = self - buffalo #idk if I did this right, but it should decrease current animals hunger
-        print(f"You move on, looking for the next meal. You're health is now: {self.health}")
+        self.health = self.health - 1 #idk if I did this right, but it should decrease current animals hunger
+                                      #We should decrease health by 1 to account for hunger. MB
+        print(f"You move on, looking for the next meal. You are hungry and lose health, your health is now: {self.health}")
         
 def sit2(self):
     
