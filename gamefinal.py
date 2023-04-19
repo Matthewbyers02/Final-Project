@@ -39,7 +39,7 @@ def sit2(self):
     
     act2 = input("""You're super thirsty and come across a murky watering whole where 
                  an agressive hippo is known to rest. \nDo you drink from it? (y/n)""")
-    if act2 != "y" or "n":
+    if act2 is not "y" or "n":
         print("Please enter either y or n")
     if act2 == "y":
         isHome = ran.randint(0, 1)
