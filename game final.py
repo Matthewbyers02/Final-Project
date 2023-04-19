@@ -18,16 +18,22 @@ def sit1(self):
           Do you choose to attack or run? (a/r): """)
     if act1 == "a":
         if self.armor < 5 | self.attack < 5:
-            print("you were overpowered and died") 
-            self.health = 0
+            herd = ran.randint(1,3)
+            print("You were no match for the power of this herd, your health has decreased by {herd}.") 
+            self.health = self.health - herd
         else:
             self.health = self.health + buffalo
-            print(f"You feasted! You're health is now {self.health}")
+            print("You feasted! You're health has increased")
             #how can we turn this type of process into a magic metod?
     else:
         self.health = self.health - 1 #idk if I did this right, but it should decrease current animals hunger
                                       #We should decrease health by 1 to account for hunger. MB
-        print(f"You move on, looking for the next meal. You are hungry and lose health, your health is now: {self.health}")
+        print("You move on, looking for the next meal. You are hungry and lose health.")
+    print(f"""Your stats are currently:\n 
+          Health: {self.health}\n
+          Attack: {self.attack}\n
+          Speed: {self.speed}\n
+          Armor: {self.armor} """)
         
 def sit2(self):
     
@@ -42,12 +48,16 @@ def sit2(self):
             self.health + 2
         if isHome == 1:
             print("The hippo was home and angry, the hippo attacked")
-            self.health - 3
+            self.health - ran.randint(2,4)
     else:
         (self.health - 2 if self.speed > 6 
          else self.health - 2 & print("You may not get to another watering hole for a while")) 
         #satisfied the condional expr req here^
-
+    print(f"""Your stats are currently:\n 
+          Health: {self.health}\n
+          Attack: {self.attack}\n
+          Speed: {self.speed}\n
+          Armor: {self.armor} """)
 #magic methods
 def __add__(self, other): 
     if isinstance(other, Traits):
