@@ -121,22 +121,25 @@ def startingAnimal():
     print(elephantDict)
     print(buffaloDict)
 
-    PAnimal = input("From the list above, which animal would you like to use?")
+    PAnimal = input("From the list above, which animal would you like to use?\n")
     if PAnimal.upper() == "ALLIGATOR":
         PAnimal = Traits(alligatorDict["name"], alligatorDict["attack"], alligatorDict["speed"], alligatorDict["armor"], alligatorDict["health"])
-    if PAnimal.upper() == "CHEETA":
+    elif PAnimal.upper() == "CHEETA":
         PAnimal = Traits(cheetaDict["name"], cheetaDict["attack"], cheetaDict["speed"], cheetaDict["armor"], cheetaDict["health"])
-    if PAnimal.upper() == "ELEPHANT":
+    elif PAnimal.upper() == "ELEPHANT":
         PAnimal = Traits(elephantDict["name"], elephantDict["attack"], elephantDict["speed"], elephantDict["armor"], elephantDict["health"])
-    if PAnimal.upper() == "BUFFALO":
+    elif PAnimal.upper() == "BUFFALO":
         PAnimal = Traits(buffaloDict["name"], buffaloDict["attack"], buffaloDict["speed"], buffaloDict["armor"], buffaloDict["health"])
+
+    return PAnimal
+
     
 
 def main():
-    startingAnimal()
-    sit1()
-    sit2()
-    sit3()
+    PAnimal = startingAnimal()
+    sit1(PAnimal)
+    sit2(PAnimal)
+    sit3(PAnimal)
 
 if __name__ == "__main__":
     main()
