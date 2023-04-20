@@ -1,4 +1,4 @@
-from random import choice
+import random as ran
 
 class Traits:
     
@@ -15,30 +15,49 @@ class Traits:
 def sit1(self):
     
     act1 = input("""You come across a herd of buffalo bathing in the mud.\n
-          Do you choose to attack or leave them be? (a/l):""")
+          Do you choose to attack or run? (a/r): """)
     if act1 == "a":
         if self.armor < 5 | self.attack < 5:
-            print("you were overpowered and died") 
-            self.health = 0
+            herd = ran.randint(1,3)
+            print("You were no match for the power of this herd, your health has decreased by {herd}.") 
+            self.health = self.health - herd
         else:
-            self = self + buffalo
-            print(f"You feasted! You're health is now {self.health}")
+            self.health = self.health + buffalo
+            print("You feasted! You're health has increased")
             #how can we turn this type of process into a magic metod?
     else:
-        self = self - buffalo #idk if I did this right, but it should decrease current animals hunger
-        print(f"You move on, looking for the next meal. You're health is now: {self.health}")
+        self.health = self.health - 1 #idk if I did this right, but it should decrease current animals hunger
+                                      #We should decrease health by 1 to account for hunger. MB
+        print("You move on, looking for the next meal. You are hungry and lose health.")
+    print(f"""Your stats are currently:\n 
+          Health: {self.health}\n
+          Attack: {self.attack}\n
+          Speed: {self.speed}\n
+          Armor: {self.armor} """)
         
 def sit2(self):
     
     act2 = input("""You're super thirsty and come across a murky watering whole where 
                  an agressive hippo is known to rest. \nDo you drink from it? (y/n)""")
+    if act2 != "y" or "n":
+        print("Please enter either y or n")
     if act2 == "y":
-        print("Drink up! Looks like the hippo wasn't home.")
-        self.health += 3
-        #do I need to use the add method for this^
+        isHome = ran.randint(0, 1)
+        if isHome == 0:
+            print("Drink up! Looks like the hippo wasn't home.")
+            self.health + 2
+        if isHome == 1:
+            print("The hippo was home and angry, the hippo attacked")
+            self.health - ran.randint(2,4)
     else:
-        self.health - 2 if self.speed > 6 else self.health - 5 & print("You may not get to another watering hole for a while")
+        (self.health - 2 if self.speed > 6 
+         else self.health - 2 & print("You may not get to another watering hole for a while")) 
         #satisfied the condional expr req here^
+    print(f"""Your stats are currently:\n 
+          Health: {self.health}\n
+          Attack: {self.attack}\n
+          Speed: {self.speed}\n
+          Armor: {self.armor} """)
         
 def sit3(self):
 
@@ -88,14 +107,36 @@ def __sub__(self, other):
             self.hunger - other.hunger
         )
 
-       
-    
-    
-#initalized animals
-alligator = Traits("Alligator", 8, 2, 9, 7)
-cheeta = Traits("Cheeta", 4, 10, 3, 3)
-elephant = Traits("Elephant", 6, 4, 7, 5)
-#"food" animals?
-buffalo = Traits("Buffalo", 1, 1, 2, 3)
+def animalDicts():
+    alligatorDict = {"name":"Alligator", "attack":8, "speed":2, "armor":9, "health":7}
+    cheetaDict = {"name":"Cheeta", "attack":10, "speed":10, "armor":3, "health":3}
+    elephantDict = {"name":"Elephant", "attack":6, "speed":4, "armor":7, "health":6}
+    buffaloDict = {"name":"Buffalo", "attack":2, "speed":2, "armor":4, "health":4}
+    return alligatorDict, cheetaDict, elephantDict, buffaloDict
 
+def startingAnimal():
+    alligatorDict, cheetaDict, elephantDict, buffaloDict = animalDicts()
+    print(alligatorDict)
+    print(cheetaDict)
+    print(elephantDict)
+    print(buffaloDict)
 
+    PAnimal = input("From the list above, which animal would you like to use?")
+    if PAnimal.upper() == "ALLIGATOR":
+        alligator = Traits(alligatorDict["name"], alligatorDict["attack"], alligatorDict["speed"], alligatorDict["armor"], alligatorDict["health"])
+    if PAnimal.upper() == "CHEETA":
+        cheeta = Traits(cheetaDict["name"], cheetaDict["attack"], cheetaDict["speed"], cheetaDict["armor"], cheetaDict["health"])
+    if PAnimal.upper() == "ELEPHANT":
+        elephant = Traits(elephantDict["name"], elephantDict["attack"], elephantDict["speed"], elephantDict["armor"], elephantDict["health"])
+    if PAnimal.upper() == "BUFFALO":
+        buffalo = Traits(buffaloDict["name"], buffaloDict["attack"], buffaloDict["speed"], buffaloDict["armor"], buffaloDict["health"])
+    
+
+def main():
+    startingAnimal()
+    sit1()
+    sit2()
+    sit3()
+
+if __name__ == "__main__":
+    main()
