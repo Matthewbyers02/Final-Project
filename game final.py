@@ -17,7 +17,7 @@ class Traits:
         act1 = input("""You come across a herd of buffalo bathing in the mud.\n
             Do you choose to attack or run? (a/r): """)
         if act1 == "a":
-            if self.armor < 5 | self.attack < 5:
+            if self.armor < 5 or self.attack < 5:
                 herd = ran.randint(1,3)
                 print(f"You were no match for the power of this herd, your health has decreased by {herd}.") 
                 self.health = self.health - herd
@@ -27,8 +27,7 @@ class Traits:
                 print("You feasted! You're health has increased")
                 #how can we turn this type of process into a magic metod?
         else:
-            self.health = self.health - 1 #idk if I did this right, but it should decrease current animals hunger
-                                        #We should decrease health by 1 to account for hunger. MB
+            self.health -= 1 
             print("You move on, looking for the next meal. You are hungry and lose health.")
         print(f"""Your stats are currently:\n 
             Health: {self.health}\n
@@ -42,7 +41,7 @@ class Traits:
                     an agressive hippo is known to rest. \nDo you drink from it? (y/n)""")
         if act2 not in ("y", "n"):
             print("Please enter either y or n")
-        if act2 == "y":
+        elif act2 == "y":
             isHome = ran.randint(0, 1)
             if isHome == 0:
                 print("Drink up! Looks like the hippo wasn't home.")
@@ -51,9 +50,7 @@ class Traits:
                 print("The hippo was home and angry, the hippo attacked")
                 self.health -= ran.randint(2,4)
         else:
-            (self.health -= 2 if self.speed > 6 
-            else self.health -= 4 & print("You may not get to another watering hole for a while")) 
-            #satisfied the condional expr req here^
+            self.health -= 2 if self.speed > 6 else (self.health - 4 and print("You may not get to another watering hole for a while"))
         print(f"""Your stats are currently:\n 
             Health: {self.health}\n
             Attack: {self.attack}\n
@@ -62,11 +59,11 @@ class Traits:
             
     def sit3(self):
 
-        food = {"boar", "monkey", "impala", "wolf", "snake", "hyena", "zebra", "ostrich"} #says food isnt access in fstring
+        food = {"boar", "monkey", "impala", "wolf", "snake", "hyena", "zebra", "ostrich"} 
         spoiled = {"monkey", "impala", "ostrich"}
         userOption = set()
         #to ask 3 times 
-        print(f"You come across an assortment of carcasses in an abondoned cave.\n{food}")
+        print(f"You come across an assortment of carcasses in an abandoned cave.\n{food}")
         i = 3
         while i > 0 :
             act3 = input(f"Choose one to eat! You have {i} pick(s) left: ")
@@ -81,28 +78,6 @@ class Traits:
         else:
             self.health -= 3
             print(f"Some of the food you ate was spoiled! Your health is now {self.health}")
-        
-#def sit4(self):
-#    act4 = input("""You spot a hunger lining up a shot!\n
-#                Do you charge or do you hide? (r/h):""")
-#    odds = choice(range(1,5)) #idk if this is right, I want to pick 1-5
-#    if act4 == "r":
-#        if odds < 2:
-
-#magic methods
-def __add__(self, other): 
-    if isinstance(other, Traits):
-        return Traits(
-            self.attack + other.attack,
-            self.health + other.health
-        )
-        
-def __sub__(self, other):
-    if isinstance(other, Traits):
-        return Traits(
-            self.attack - other.attack,
-            self.health - other.health
-        )
 
 def animalDicts():
     alligatorDict = {"name":"Alligator", "attack":8, "speed":2, "armor":9, "health":7}
@@ -129,8 +104,6 @@ def startingAnimal():
         PAnimal = Traits(buffaloDict["name"], buffaloDict["attack"], buffaloDict["speed"], buffaloDict["armor"], buffaloDict["health"])
 
     return PAnimal
-
-    
 
 def main():
     PAnimal = startingAnimal()
