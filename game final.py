@@ -1,3 +1,6 @@
+from random import choice
+
+
 class Traits:
     
     def __init__(self, name, attack, speed, armor, health):
@@ -61,6 +64,13 @@ def sit3(self):
         self.health -= 3
         print("Some of the food you ate was spoiled! You health is now {self.health}")
         
+#def sit4(self):
+#    act4 = input("""You spot a hunger lining up a shot!\n
+#                Do you charge or do you hide? (r/h):""")
+#    odds = choice(range(1,5)) #idk if this is right, I want to pick 1-5
+#    if act4 == "r":
+#        if odds < 2:
+            
         
     
     
