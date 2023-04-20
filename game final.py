@@ -1,6 +1,5 @@
 from random import choice
 
-
 class Traits:
     
     def __init__(self, name, attack, speed, armor, health):
@@ -38,8 +37,7 @@ def sit2(self):
         self.health += 3
         #do I need to use the add method for this^
     else:
-        (self.health -= 2 if self.speed > 6 
-         else self.health -= 5 & print("You may not get to another watering hole for a while"))
+        self.health - 2 if self.speed > 6 else self.health - 5 & print("You may not get to another watering hole for a while")
         #satisfied the condional expr req here^
         
 def sit3(self):
