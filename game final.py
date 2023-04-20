@@ -123,13 +123,13 @@ def startingAnimal():
 
     PAnimal = input("From the list above, which animal would you like to use?")
     if PAnimal.upper() == "ALLIGATOR":
-        alligator = Traits(alligatorDict["name"], alligatorDict["attack"], alligatorDict["speed"], alligatorDict["armor"], alligatorDict["health"])
+        PAnimal = Traits(alligatorDict["name"], alligatorDict["attack"], alligatorDict["speed"], alligatorDict["armor"], alligatorDict["health"])
     if PAnimal.upper() == "CHEETA":
-        cheeta = Traits(cheetaDict["name"], cheetaDict["attack"], cheetaDict["speed"], cheetaDict["armor"], cheetaDict["health"])
+        PAnimal = Traits(cheetaDict["name"], cheetaDict["attack"], cheetaDict["speed"], cheetaDict["armor"], cheetaDict["health"])
     if PAnimal.upper() == "ELEPHANT":
-        elephant = Traits(elephantDict["name"], elephantDict["attack"], elephantDict["speed"], elephantDict["armor"], elephantDict["health"])
+        PAnimal = Traits(elephantDict["name"], elephantDict["attack"], elephantDict["speed"], elephantDict["armor"], elephantDict["health"])
     if PAnimal.upper() == "BUFFALO":
-        buffalo = Traits(buffaloDict["name"], buffaloDict["attack"], buffaloDict["speed"], buffaloDict["armor"], buffaloDict["health"])
+        PAnimal = Traits(buffaloDict["name"], buffaloDict["attack"], buffaloDict["speed"], buffaloDict["armor"], buffaloDict["health"])
     
 
 def main():
