@@ -22,7 +22,7 @@ def sit1(self):
             print("You were no match for the power of this herd, your health has decreased by {herd}.") 
             self.health = self.health - herd
         else:
-            self.health = self.health + buffalo
+            self.health = self.health + buffaloDict[health]
             print("You feasted! You're health has increased")
             #how can we turn this type of process into a magic metod?
     else:
@@ -80,6 +80,12 @@ def sit3(self):
     else:
         self.health -= 3
         print("Some of the food you ate was spoiled! You health is now {self.health}")
+
+    print(f"""Your stats are currently:\n 
+        Health: {self.health}\n
+        Attack: {self.attack}\n
+        Speed: {self.speed}\n
+        Armor: {self.armor} """)
         
 #def sit4(self):
 #    act4 = input("""You spot a hunger lining up a shot!\n
