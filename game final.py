@@ -62,24 +62,24 @@ def sit2(self):
 def sit3(self):
 
     food = {"boar", "monkey", "impala", "wolf", "snake", "hyena", "zebra", "ostrich"} #says food isnt access in fstring
-    spoiled = {"monkey", "impala", "ostritch"}
-    userOption = {}
+    spoiled = {"monkey", "impala", "ostrich"}
+    userOption = set()
     #to ask 3 times 
-    print("""You come across an assortment of carcasses in an abondoned cave.\n{food}""")
+    print(f"You come across an assortment of carcasses in an abondoned cave.\n{food}")
     i = 3
     while i > 0 :
-        act3 = input("""Choose one to eat! You have {i} pick(s) left: """)
+        act3 = input(f"Choose one to eat! You have {i} pick(s) left: ")
         #updates initalized set
-        userOption.append(act3)
+        userOption.add(act3)
         i -= 1
     #checks to see if any chosen food is spoiled and updates health accordinly 
     overlap = bool(userOption & spoiled)
     if overlap == False:
         self.health += 3
-        print("You chose your food wisely. Your health is now {self.health}")
+        print(f"You chose your food wisely. Your health is now {self.health}")
     else:
         self.health -= 3
-        print("Some of the food you ate was spoiled! You health is now {self.health}")
+        print(f"Some of the food you ate was spoiled! Your health is now {self.health}")
         
 #def sit4(self):
 #    act4 = input("""You spot a hunger lining up a shot!\n
